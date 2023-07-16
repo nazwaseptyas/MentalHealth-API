@@ -29,3 +29,14 @@ model user {
   avatar          String?
    alamat          String?
 }
+
+model konsultasi {
+  id            Int      @id @default(autoincrement())
+  nama          String?
+  email         String   @unique
+  tanggal       String
+  created_at    DateTime @default(now())
+  nohp          String?
+  keluhan       String?  @db.Text
+  alamat        String?  @db.Text
+}
