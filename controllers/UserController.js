@@ -14,15 +14,16 @@ export const getUsers = async (req, res) => {
 };
 
 export const Register = async (req, res) => {
-  const { username, nama, email, password } = req.body;
+  const { nama, email, nohp, password, alamat } = req.body;
 
   try {
     await prisma.user.create({
       data: {
-        username,
-        nama: nama,
-        email: email,
-        password: password,
+        nama,
+        email,
+        alamat,
+        nohp,
+        password,
       },
     });
 
