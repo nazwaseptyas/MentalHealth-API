@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import ProductRoute from './routes/ProductRoute.js';
 import UserRoute from './routes/UserRoute.js';
+import KonsultasiRoute from './routes/KonsultasiRouter.js';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(ProductRoute);
+app.use(KonsultasiRoute);
 // app.use(UserRoute);
 app.use('/', UserRoute);
 // app.use("/test",);
