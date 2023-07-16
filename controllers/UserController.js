@@ -54,40 +54,41 @@ export const Login = async (req, res) => {
     if (user == null)
       return res.status(400).json({ msg: 'User Tidak terdaftar' });
 
-    const match = await bcrypt.compare(req.body.password, user.password);
+    // const match = await bcrypt.compare(req.body.password, user.password);
+    const match = req.body.password == user.password;
     if (!match) return res.status(400).json({ msg: 'Wrong Password' });
-    const userId = user.id;
-    const name = user.name;
-    const email = user.email;
-    const accessToken = jwt.sign(
-      { userId, name, email },
-      process.env.ACCESS_TOKEN_SECRET,
-      {
-        expiresIn: '50s',
-      },
-    );
-    const refreshToken = jwt.sign(
-      { userId, name, email },
-      process.env.REFRESH_TOKEN_SECRET,
-      {
-        expiresIn: '1d',
-      },
-    );
+    // const userId = user.id;
+    // const name = user.name;
+    // const email = user.email;
+    // const accessToken = jwt.sign(
+    //   { userId, name, email },
+    //   process.env.ACCESS_TOKEN_SECRET,
+    //   {
+    //     expiresIn: '50s',
+    //   },
+    // );
+    // const refreshToken = jwt.sign(
+    //   { userId, name, email },
+    //   process.env.REFRESH_TOKEN_SECRET,
+    //   {
+    //     expiresIn: '1d',
+    //   },
+    // );
 
-    await prisma.user.update({
-      where: {
-        id: userId,
-      },
-      data: {
-        refresh_token: refreshToken,
-      },
-    });
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000,
-      // secure: true
-    });
-    res.json({ accessToken });
+    // await prisma.user.update({
+    //   where: {
+    //     id: userId,
+    //   },
+    //   data: {
+    //     refresh_token: refreshToken,
+    //   },
+    // });
+    // res.cookie('refreshToken', refreshToken, {
+    //   httpOnly: true,
+    //   maxAge: 24 * 60 * 60 * 1000,
+    //   // secure: true
+    // });
+    res.json({ user });
   } catch (error) {
     console.log(error);
   }
