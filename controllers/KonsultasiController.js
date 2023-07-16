@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export const createKonsultasi = async (req, res) => {
   const { nama, email, alamat, nohp, keluhan, tanggal } = req.body;
   try {
-    const data = await prisma.konsultasi.create({
+    const konsultasi = await prisma.konsultasi.create({
       data: {
         nama,
         email,
@@ -15,7 +15,7 @@ export const createKonsultasi = async (req, res) => {
         tanggal,
       },
     });
-    res.status(201).json(data);
+    res.status(201).json(konsultasi);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }

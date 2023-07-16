@@ -32,11 +32,11 @@ model user {
 
 model konsultasi {
   id            Int      @id @default(autoincrement())
-  nama          String?
-  email         String   @unique
-  tanggal       String
+  nama          String?  @db.Text
+  email         String?   @db.Text
+  tanggal       String?   @db.Text
   created_at    DateTime @default(now())
-  nohp          String?
+  nohp          String?  @db.Text
   keluhan       String?  @db.Text
   alamat        String?  @db.Text
 }
