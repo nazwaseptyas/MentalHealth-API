@@ -26,8 +26,9 @@ model user {
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
   nohp          String?
-  avatar          String?
-   alamat          String?
+  avatar        String?
+  alamat        String?
+  role          String?
 }
 
 model konsultasi {
