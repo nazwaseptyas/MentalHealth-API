@@ -40,3 +40,14 @@ model konsultasi {
   keluhan       String?  @db.Text
   alamat        String?  @db.Text
 }
+
+model artikel {
+  id            Int      @id @default(autoincrement())
+  judul         String?  @db.Text
+  penulis       String?   @db.Text
+  tanggal       String?   @db.Text
+  created_at    DateTime @default(now())
+  gambar        String?  @db.Text
+  isi_artikel   String?  @db.Text
+  kategori      String?  @db.Text
+}
