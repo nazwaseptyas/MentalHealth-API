@@ -11,18 +11,13 @@ export const getDataArtikel = async (req, res) => {
   }
 };
 export const createArtikel = async (req, res) => {
-  const { gambar
-    //  email, alamat, nohp, keluhan, tanggal
-  } = req.body;
+  const { gambar, judul, penulis, isi_artikel, tanggal } = req.body;
   try {
     const artikel = await prisma.artikel.create({
       data: {
         gambar,
-        // email,
-        // alamat,
-        // nohp,
-        // keluhan,
-        // tanggal,
+        judul, penulis, isi_artikel, tanggal
+
       },
     });
     res.status(201).json(artikel);
