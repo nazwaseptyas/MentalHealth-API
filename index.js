@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import ProductRoute from './routes/ProductRoute.js';
 import UserRoute from './routes/UserRoute.js';
 import KonsultasiRoute from './routes/KonsultasiRouter.js';
+import ArtikelRoute from './routes/ArtikelRouter.js';
 
 dotenv.config();
 
@@ -16,17 +17,14 @@ const corsOptions = {
     'http://localhost:5174',
     'https://mental-health-chi.vercel.app',
   ],
-  credentials: true, //access-control-allow-credentials:true
+  credentials: true,
 };
 app.use(cors(corsOptions));
-// app.use(cors({
-//     origin: 'http://localhost:5173/',
-//     credentials: true
-// }));
 
 app.use(express.json());
 app.use(ProductRoute);
 app.use(KonsultasiRoute);
+app.use(ArtikelRoute);
 app.use('/', UserRoute);
 app.listen(5000, () => console.log('Server running at port 5000'));
 
