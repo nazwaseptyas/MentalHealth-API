@@ -21,3 +21,17 @@ export const createArtikel = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
+
+
+export const deleteArtikel = async (req, res) => {
+  try {
+      const artikel = await prisma.artikel.delete({
+          where: {
+              id: Number(req.params.id)
+          }
+      });
+      res.status(200).json(artikel);
+  } catch (error) {
+      res.status(400).json({ msg: error.message });
+  }
+}
