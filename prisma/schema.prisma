@@ -47,6 +47,7 @@ model artikel {
   judul         String?  @db.Text
   penulis       String?   @db.Text
   tanggal       String?   @db.Text
+  slug          String?   @db.Text
   created_at    DateTime @default(now())
   gambar        String?  @db.Text
   isi_artikel   String?  @db.Text
