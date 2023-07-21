@@ -16,6 +16,7 @@ const corsOptions = {
     'http://localhost:5173',
     'http://localhost:5174',
     'https://mental-health-chi.vercel.app',
+    'https://mental-health-admin.vercel.app',
   ],
   credentials: true,
 };
